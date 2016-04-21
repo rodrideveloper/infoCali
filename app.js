@@ -36,7 +36,7 @@ app.get('/panaderias', function(req, res) {
     var fs = require('fs');
     var obj = JSON.parse(fs.readFileSync('json/datos.json', 'utf8'));
   
-       res.send(obj);
+       res.json(obj);
     
  
 });
