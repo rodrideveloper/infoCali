@@ -1,5 +1,4 @@
 
-
 {
   "Panaderia1":{ 
               "nombre":"Panaderia Mantequilla" ,
@@ -15,5 +14,11 @@
             "nombre":"Panceta" ,
             "lat": "3.441164",
             "lng": "-76.533094" 
-          }
+          },
+  "Panaderia4":{ 
+            "nombre":"MasaPan111" ,
+            "lat": "3.446661",
+            "lng": "-76.533771" 
+          },
+
 }
