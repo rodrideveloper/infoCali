@@ -1,8 +1,8 @@
 var express  = require("express"),
     app      = express(),
     http     = require("http"),
-     fs = require('fs'),
-    server   = http.createServer(app);
+     fs = require('fs');
+   
    // mongoose = require('mongoose'); 
 
    var allowCrossDomain = function(req, res, next) {
@@ -51,7 +51,4 @@ app.get('/panaderias', function(req, res) {
 	}
 });**/
 
-
-server.listen(process.env.port || 3000, function() {
-  console.log("Node server running !! A LIVE");
-});
+app.listen(process.env.PORT||3000);
