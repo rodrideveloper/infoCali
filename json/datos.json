@@ -1,0 +1,19 @@
+
+
+{
+  "Panaderia1":{ 
+              "nombre":"Panaderia Mantequilla" ,
+              "lat": "3.440639",
+              "lng": "-76.534489"
+           },
+  "Panaderia2":{ 
+              "nombre":"AzulPan",
+              "lat": "3.439075",
+              "lng": "-76.536367"
+           },
+  "Panaderia3":{ 
+            "nombre":"Panceta" ,
+            "lat": "3.441164",
+            "lng": "-76.533094" 
+          }
+}
