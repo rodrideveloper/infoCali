@@ -1,4 +1,4 @@
-
+ 
 {
   "Panaderia1":{ 
               "nombre":"Panaderia Mantequilla" ,
@@ -19,6 +19,12 @@
             "nombre":"MasaPan111" ,
             "lat": "3.446661",
             "lng": "-76.533771" 
-          }
+          },
+  "Panaderia5":{ 
+            "nombre":"RootPanaderia" ,
+            "lat": "3.459062",
+            "lng": "-76.533128" 
+          }        
+
 
 }
