@@ -1,7 +1,6 @@
- 
 {
   "Panaderia1":{ 
-              "nombre":"Panaderia Mantequilla" ,
+              "nombre":"Panaderia Mantequilla",
               "lat": "3.440639",
               "lng": "-76.534489"
            },
@@ -24,7 +23,19 @@
             "nombre":"RootPanaderia" ,
             "lat": "3.459062",
             "lng": "-76.533128" 
-          }        
+          },        
+    "Panaderia6":{ 
+            "nombre":"NuevaNoCach" ,
+            "lat": "3.453022",
+            "lng": "-76.527806"
+ 
+          },
+    "Panaderia7":{ 
+            "nombre":"ultima",
+            "lat": "3.453407",
+            "lng": "-76.53514"
+ 
+          }             
 
 
 }
