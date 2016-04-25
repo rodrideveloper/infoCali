@@ -51,7 +51,7 @@ io.sockets.on('connection', function (socket) {
         users.push(user);       
     
     //Envia una lista de todos los usuarios conectados
-     socket.broadcast.emit('agregarMapa',user);
+     io.sockets.emit('agregarMapa',users);
  
   });
 
