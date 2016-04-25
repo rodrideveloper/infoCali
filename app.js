@@ -1,7 +1,10 @@
 var express  = require("express"),
     app      = express(),
+   server = require('http').Server(app),
+    io = require('socket.io')(server);
     http     = require("http"),
-     fs = require('fs');
+    fs = require('fs');
+   
    
    // mongoose = require('mongoose'); 
 
@@ -27,19 +30,51 @@ app.configure(function () {
 });
 
 app.get('/', function(req, res) {
-  res.send("Hello world!");
+  res.send("Funcionando..");
 });
+
+var users=[];
+
+io.sockets.on('connection', function (socket) {
+
+
+   //Ingresa al nuevo user en un array
+  socket.on('nuevoUser',function(data){         
+      var user={     
+          lat:data.lat,
+          lon:data.lon
+        }
+      
+        users.push(user);
+        console.log(users);
+    
+    //Envia una lista de todos los usuarios conectados
+     io.sockets.emit('listaUsers',users);
+ 
+  });
+   
+});
+
+
 
 
 
 app.get('/panaderias', function(req, res) {
     var fs = require('fs');
-    var obj = JSON.parse(fs.readFileSync('json/datos.json', 'utf8'));
-  
-       res.json(obj);
-    
+    var obj = JSON.parse(fs.readFileSync('json/panaderias.json', 'utf8'));  
+    console.log("obteniendo panaderias");
+       res.json(obj);  
  
 });
+
+app.get('/bares', function(req, res) {
+    var fs = require('fs');
+    var obj = JSON.parse(fs.readFileSync('json/bares.json', 'utf8'));  
+    console.log("obteniendo bares");
+       res.json(obj);  
+ 
+});
+
 
  //routes = require('./routes/tvshows')(app);
 
@@ -51,4 +86,7 @@ app.get('/panaderias', function(req, res) {
 	}
 });**/
 
-app.listen(process.env.PORT||3000);
+//server.listen(process.env.PORT||3000);
+server.listen(process.env.PORT||3000,function(){
+  console.log("Server On");
+});
