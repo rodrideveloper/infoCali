@@ -37,9 +37,10 @@ var users=[];
 
 io.sockets.on('connection', function (socket) {
 
-
+  console.log("Nueva coneccion");
    //Ingresa al nuevo user en un array
-  socket.on('nuevoUser',function(data){         
+  socket.on('nuevoUser',function(data){     
+  console.log("Nueva User");    
       var user={     
           lat:data.lat,
           lon:data.lon
@@ -52,6 +53,15 @@ io.sockets.on('connection', function (socket) {
      io.sockets.emit('listaUsers',users);
  
   });
+
+  socket.on('disconnect', function() {
+      console.log('Hasta Pronto!');    
+
+      var i = users.indexOf(socket);
+
+      users.splice(i, 1);
+   });
+
    
 });
 
@@ -63,9 +73,17 @@ app.get('/panaderias', function(req, res) {
     var fs = require('fs');
     var obj = JSON.parse(fs.readFileSync('json/panaderias.json', 'utf8'));  
     console.log("obteniendo panaderias");
-       res.json(obj);  
- 
+       res.json(obj);   
 });
+
+app.get('/clearUsers', function(req, res) {
+    console.log("Usuarios:"+ users);
+    users=[];
+    res.redner("Limpiado.. :)");
+});
+
+
+
 
 app.get('/bares', function(req, res) {
     var fs = require('fs');
