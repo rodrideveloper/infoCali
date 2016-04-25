@@ -37,29 +37,41 @@ var users=[];
 
 io.sockets.on('connection', function (socket) {
 
-  console.log("Nueva coneccion");
+  
    //Ingresa al nuevo user en un array
   socket.on('nuevoUser',function(data){     
-  console.log("Nueva User");    
+  console.log("Nueva User con nick:"+data.nickName);    
       var user={     
           lat:data.lat,
-          lon:data.lon
+          lon:data.lon,
+          nick:data.nickName
         }
+        socket.nickName=data.nickName;
       
-        users.push(user);
-        console.log(users);
+        users.push(user);       
     
     //Envia una lista de todos los usuarios conectados
-     io.sockets.emit('listaUsers',users);
+     socket.broadcast.emit('agregarMapa',user);
  
   });
 
   socket.on('disconnect', function() {
-      console.log('Hasta Pronto!');    
+        
+      console.log("El usuario se ha desconectado:"+socket.nickName);
+      console.log("Usuarios antes:"+users);  
 
-      var i = users.indexOf(socket);
+      for (i=0;i<users.length;i++){
 
-      users.splice(i, 1);
+          if(users[i].nick ==socket.nickName){
+           users.splice(i,1)
+
+        };
+    }
+
+
+   
+      console.log("Usuarios ahora"+users);
+      io.sockets.emit('remover',socket.nickName);
    });
 
    
