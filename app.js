@@ -55,6 +55,24 @@ io.sockets.on('connection', function (socket) {
  
   });
 
+
+
+
+  socket.on('updatePos',function(data){     
+    var pos=null;
+          for (i=0;i<users.length;i++){
+            if(users[i].nick ==socket.nickName){
+              pos=i;
+              users[i].lat=data.lat;
+              users[i].lon=data.lon;                            
+          };
+      };  
+
+    //Actualiza posicion de un user en un mapa
+     io.sockets.emit('posActualizada',users[pos]);
+ 
+  });
+
   socket.on('disconnect', function() {
         
       console.log("El usuario se ha desconectado:"+socket.nickName);
